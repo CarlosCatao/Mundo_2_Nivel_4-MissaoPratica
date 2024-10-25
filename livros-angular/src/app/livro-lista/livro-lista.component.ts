@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ControleEditoraService } from '../controle-editora.service';
-import { ControleLivrosService } from '../controle-livros.service';
-import { Livro } from '../livro';
-import { Editora } from '../editora';
+import { ControleEditoraService } from '../services/controle-editora.service';
+import { ControleLivroService } from '../services/controle-livros.service';
+import { Livro } from '../models/livro';
+import { Editora } from '../models/editora';
 
 @Component({
   selector: 'app-livro-lista',
@@ -15,12 +15,13 @@ export class LivroListaComponent implements OnInit {
 
   constructor(
     private servEditora: ControleEditoraService,
-    private servLivros: ControleLivrosService
+    private servLivros: ControleLivroService
   ) {}
 
   ngOnInit(): void {
     this.editoras = this.servEditora.getEditoras();
     this.livros = this.servLivros.obterLivros();
+    console.log('Livrtos carregados:', this.livros);
   }
 
   excluir = (codigo: number): void => {
@@ -28,7 +29,7 @@ export class LivroListaComponent implements OnInit {
     this.livros = this.servLivros.obterLivros();
   };
 
-  obterNome = (codEditora: number): string => {
+  obterNome = (codEditora: number): string | undefined => {
     return this.servEditora.getNomeEditora(codEditora);
   };
 }
