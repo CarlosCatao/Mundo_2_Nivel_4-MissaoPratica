@@ -20,7 +20,6 @@ export class ControleLivroService {
   }
 
   incluir(livro: Livro): Promise<void> {
-    console.log('Livro recebido no serviço:', livro);
     const novoCodigo = this.livros.length > 0 ? Math.max(...this.livros.map(l => l.codigo)) + 1 : 1;
     livro.codigo = novoCodigo;
     return new Promise((resolve) => {

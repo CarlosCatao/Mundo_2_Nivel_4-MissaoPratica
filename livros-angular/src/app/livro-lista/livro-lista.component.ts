@@ -21,7 +21,6 @@ export class LivroListaComponent implements OnInit {
   ngOnInit(): void {
     this.editoras = this.servEditora.getEditoras();
     this.livros = this.servLivros.obterLivros();
-    console.log('Livrtos carregados:', this.livros);
   }
 
   excluir = (codigo: number): void => {

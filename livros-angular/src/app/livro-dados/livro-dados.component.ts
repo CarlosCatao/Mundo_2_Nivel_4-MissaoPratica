@@ -24,7 +24,6 @@ export class LivroDadosComponent implements OnInit {
 
   ngOnInit(): void {
     this.editoras = this.servEditora.getEditoras();
-    console.log('Editoras carregadas:', this.editoras);
   }
 
   incluir = () => {
@@ -34,10 +33,7 @@ export class LivroDadosComponent implements OnInit {
       return;
     }
     this.livro.codEditora = Number(this.livro.codEditora);
-    console.log('Livro a ser incluído:', this.livro);
     this.servLivros.incluir(this.livro);
-    console.log('Livro incluído com sucesso');
-    console.log('Navegação para a lista de livros');
     this.router.navigateByUrl('/lista');    
   }
 }
